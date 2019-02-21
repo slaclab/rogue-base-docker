@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/slaclab/rogue-base-docker.svg?branch=master)](https://travis-ci.com/slaclab/rogue-base-docker)
+
 # Base Docker image for Rogue
 
 This Docker image, called *rogue-base*, contains all the packages and tools needed to build Rogue. It is use as a base image to generate the Rogue docker image.
