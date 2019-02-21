@@ -25,11 +25,11 @@ And the following python packages:
 - numpy
 - pyepics
 
-## Building the image
-
-The provided script *build_docker.sh* will automatically build the docker image. It will tag the resulting image using the same git tag string (as returned by `git describe --tags --always`).
+## Docker image automatic generation
 
 When a tag is pushed to this github repository, a new Docker image is automatically built and push to its [Dockerhub repository](https://hub.docker.com/r/tidair/rogue-base) using travis.
+
+The resulting docker image is tagged with the same git tag string (as returned by `git describe --tags --always`).
 
 ## How To Get The Container
 
