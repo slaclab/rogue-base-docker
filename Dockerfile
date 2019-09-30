@@ -32,4 +32,5 @@ ENV EPICS_PCAS_ROOT /usr/local/src/pcas/pcas-4.13.2
 # Install P4P
 
 # PIP Packages
-RUN pip3 install PyYAML Pyro4 parse click ipython pyzmq packaging matplotlib numpy pyepics p4p
+RUN pip3 install PyYAML Pyro4 parse click ipython pyzmq packaging matplotlib numpy pyepics p4p pydm jsonpickle sqlalchemy pyserial
+
