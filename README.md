@@ -1,26 +1,59 @@
-# PCAS - Portable Channel Access Server
+[![Build Status](https://travis-ci.com/slaclab/rogue-base-docker.svg?branch=master)](https://travis-ci.com/slaclab/rogue-base-docker)
 
-[EPICS](https://epics-controls.org/) Portable Channel Access Server
-and Generic Data Descriptor C++ libraries, split off from
-[EPICS Base 3.16.1](https://epics-controls.org/resources-and-support/base/series-3-16/3-16-1/)
-as a separate module for
-[EPICS 7](https://epics-controls.org/resources-and-support/base/epics-7/).
+# Base Docker image for Rogue
 
-The repository keeps the complete history of the code, i.e. it is a clone 
-of the EPICS Base repository, which explains its size.
+This Docker image, called *rogue-base*, contains all the packages and tools needed to build Rogue. It is use as a base image to generate the Rogue docker image.
 
-## Building
+## What does it contains
 
-This is a standard EPICS module. Create a file `RELEASE.local` (either inside 
-the configure directory or one directory level above the module's root) that 
-sets `EPICS_BASE` to where your EPICS installation is located.
+The docker image is base on ubuntu 18.04 and contains the following system packages :
+- cmake
+- boost
+- python3
+- pyqt5
+- zmq
+- epics base 3.15.5
+- other basic system tools.
 
-*Note:* This module is intended to be compiled against EPICS 7. 
-To build the module against an existing older Base < 3.17, you have to 
-manually export the CA client library header file `net_convert.h`:
+And the following python packages:
+- PyYAML
+- Pyro4
+- parse
+- click
+- ipython
+- pyzmq
+- packaging
+- matplotlib
+- numpy
+- pyepics
 
-    cp <EPICS_BASE>/src/ca/client/net_convert.h <EPICS_BASE>/include/
+## Docker image automatic generation
 
-Additional information and documentation:
-* [Base 3.16.1 home page](https://epics-controls.org/resources-and-support/base/series-3-16/3-16-1/)
-* [CA 4.13.1 Reference Manual](https://epics.anl.gov/base/R7-0/1-docs/CAref.html)
+When a tag is pushed to this github repository, a new Docker image is automatically built and push to its [Dockerhub repository](https://hub.docker.com/r/tidair/rogue-base) using travis.
+
+The resulting docker image is tagged with the same git tag string (as returned by `git describe --tags --always`).
+
+## How To Get The Container
+
+To get a specific tagged version of the docker image, first you will need to install docker in you host OS and be logged in. Then you can get a copy by running:
+
+```
+docker pull tidair/rogue-base:$TAG
+```
+Where **$TAG** is the tagged version of the container your want to get.
+
+## Running the container
+
+The image is intended mainly to be use as a base to build other docker images. In order to do so, start the new docker image's Dockerfile with this line:
+
+```
+ROM tidair/rogue-base:$TAG
+```
+
+A container however can be run as well from this image. For example, you can start the container in the foreground with this command
+
+```
+docker run -ti --rm --name rogue-base tidair/rogue-base:$TAG
+```
+
+Where **$TAG** is the tagged version of the container your want to run.
