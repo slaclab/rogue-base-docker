@@ -26,10 +26,8 @@ ENV EPICS_BASE /usr/local/src/epics/base-7.0.3
 RUN mkdir -p /usr/local/src/pcas/pcas-4.13.2
 WORKDIR /usr/local/src/pcas/pcas-4.13.2
 RUN wget -c pcas-4.13.2.tar.gz https://github.com/epics-modules/pcas/archive/v4.13.2.tar.gz -O - | tar zx --strip 1
-RUN make clean && make && make install
-ENV EPICS_PCAS_ROOT /usr/local/src/pcas/pcas-4.13.2
-
-# Install P4P
+RUN make INSTALL_LOCATION=$EPICS_BASE/pcas EPICS_BASE=$EPICS_BASE
+ENV EPICS_PCAS_ROOT $EPICS_BASE/pcas
 
 # PIP Packages
 RUN pip3 install PyYAML Pyro4 parse click ipython pyzmq packaging matplotlib numpy pyepics p4p pydm jsonpickle sqlalchemy pyserial

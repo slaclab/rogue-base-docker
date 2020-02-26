@@ -1,0 +1,51 @@
+diff --git a/configure/CONFIG_COMMON b/configure/CONFIG_COMMON
+index d3a6696..c01374b 100644
+--- a/configure/CONFIG_COMMON
++++ b/configure/CONFIG_COMMON
+@@ -48,7 +48,7 @@ CHECK_RELEASE_WARN = warnRelease
+ # GNU directory
+ # GNU_DIR definition is here because it is used to find
+ # READLINE library even if GNU compiler is not used
+-GNU_DIR = /usr
++GNU_DIR = $(GNU_DIR_OVERRIDE)
+ 
+ #-------------------------------------------------------
+ # Directories
+@@ -123,7 +123,7 @@ CONFIG_TARGETS += $(CHECK_RELEASE_$(CHECK_RELEASE))
+ DEP = .d
+ OBJ = .o
+ CMPLR_SUFFIX =
+-CMPLR_PREFIX =
++CMPLR_PREFIX = $(CMPLR_PREFIX_OVERRIDE)
+ LIB_PREFIX =
+ LIB_SUFFIX =
+ SHRLIB_PREFIX = $(LIB_PREFIX)
+@@ -204,10 +204,10 @@ OP_SYS_LDFLAGS =
+ OP_SYS_INCLUDES =
+ 
+ # Makefile specific flags
+-USR_INCLUDES =
++USR_INCLUDES = -I$(PREFIX)/include
+ USR_CFLAGS =
+-USR_CXXFLAGS =
+-USR_LDFLAGS =
++USR_CXXFLAGS = -std=c++11
++USR_LDFLAGS = -L$(PREFIX)/lib -Wl,-rpath-link,$(PREFIX)/lib -Wl,-rpath,$(PREFIX)/lib
+ USR_LIBS =
+ USR_CPPFLAGS =
+ USR_DBDFLAGS =
+@@ -399,10 +399,10 @@ INSTALL_LIB_INSTALLS = $(addprefix $(INSTALL_LIB)/,$(notdir $(LIB_INSTALLS)))
+ 
+ #---------------------------------------------------------------
+ # Installed file permissions
+-BIN_PERMISSIONS = 555
+-LIB_PERMISSIONS = 444
+-SHRLIB_PERMISSIONS = 555
+-INSTALL_PERMISSIONS = 444
++BIN_PERMISSIONS = 755
++LIB_PERMISSIONS = 644
++SHRLIB_PERMISSIONS = 755
++INSTALL_PERMISSIONS = 644
+ 
+ #---------------------------------------------------------------
+ #
