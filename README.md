@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/slaclab/rogue-base-docker/workflows/Rogue%20Base%20Docker%20Deployment/badge.svg)](https://github.com/slaclab/rogue-base-docker/actions?query=workflow%3ARogue%20Base%20Docker%20Deployment)
+[![Build Status](https://github.com/slaclab/rogue-base-docker/workflows/Rogue%20Base%20Docker%20Deployment/badge.svg)](https://github.com/slaclab/rogue-base-docker/actions?query=workflow%3A%22Rogue+Base+Docker+Deployment%22)
 
 # Base Docker image for Rogue
 
