@@ -52,4 +52,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: tidair/rogue-base:${{ steps.get_tag.outputs.tag }}
-          build-args: branch=${{ steps.get_tag.outputs.tag }}
