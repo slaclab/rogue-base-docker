@@ -13,10 +13,10 @@
 # secrets.DOCKERHUB_TOKEN
 
 name: Rogue Base Docker Deployment
-on:
-  push:
-    tags:
-      - '*'
+on: push
+  # push:
+  #   tags:
+  #     - '*'
 
 jobs:
   deploy_docker:
@@ -45,11 +45,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Build and push the docker image
-      - name: Build and push image to Dockerhub
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: tidair/rogue-base:${{ steps.get_tag.outputs.tag }}
-          build-args: branch=${{ steps.get_tag.outputs.tag }}
+      # - name: Build and push image to Dockerhub
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     file: ./Dockerfile
+      #     push: true
+      #     tags: tidair/rogue-base:${{ steps.get_tag.outputs.tag }}
+      #     build-args: branch=${{ steps.get_tag.outputs.tag }}
