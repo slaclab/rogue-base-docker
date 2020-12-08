@@ -29,7 +29,7 @@ And the following python packages:
 
 ## Docker image automatic generation
 
-When a tag is pushed to this github repository, a new Docker image is automatically built and push to its [Dockerhub repository](https://hub.docker.com/r/tidair/rogue-base) using travis.
+When a tag is pushed to this github repository, a new Docker image is automatically built and push to its [Dockerhub repository](https://hub.docker.com/r/tidair/rogue-base) using GitHub Actions.
 
 The resulting docker image is tagged with the same git tag string (as returned by `git describe --tags --always`).
 
