@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/slaclab/rogue-base-docker.svg?branch=master)](https://travis-ci.com/slaclab/rogue-base-docker)
+[![Build Status](https://github.com/slaclab/rogue-base-docker/workflows/Rogue%20Base%20Docker%20Deployment/badge.svg)](https://github.com/slaclab/rogue-base-docker/actions?query=workflow%3ARogue%20Base%20Docker%20Deployment)
 
 # Base Docker image for Rogue
 
