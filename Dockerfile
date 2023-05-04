@@ -25,7 +25,9 @@ RUN wget -c base-7.0.7.tar.gz https://github.com/epics-base/epics-base/archive/R
 RUN make clean && make && make install
 ENV EPICS_BASE /usr/local/src/epics/base-7.0.7
 ENV PATH $PATH:$EPICS_BASE/bin/linux-x86_64
-RUN ldconfig $EPICS_BASE/lib/linux-x86_64
+RUN echo /usr/local/lib >> /etc/ld.so.conf.d/rogue_epics.conf
+RUN echo $EPICS_BASE/lib/linux-x86_64 >> /etc/ld.so.conf.d/rogue_epics.conf
+RUN ldconfig
 
 # Install PCAS
 RUN mkdir -p /usr/local/src/pcas/pcas-4.13.3
@@ -35,7 +37,8 @@ RUN echo "EPICS_BASE = ${EPICS_BASE}" >> configure/RELEASE
 RUN make INSTALL_LOCATION=$EPICS_BASE/pcas
 ENV EPICS_PCAS_ROOT $EPICS_BASE/pcas
 ENV PATH $PATH:$EPICS_PCAS_ROOT/bin/linux-x86_64
-RUN ldconfig $EPICS_PCAS_ROOT/lib/linux-x86_64
+RUN echo $EPICS_PCAS_ROOT/lib/linux-x86_64 >> /etc/ld.so.conf.d/rogue_epics.conf
+RUN ldconfig
 
 # PIP Packages
 RUN pip3 install PyYAML parse click ipython pyzmq packaging matplotlib numpy pyepics p4p pydm jsonpickle sqlalchemy pyserial
