@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     libzmq3-dev \
     python3-pyqt5 \
+    python3-pyqt5.qtsvg \
     libreadline6-dev \
  && rm -rf /var/lib/apt/lists/*
 
